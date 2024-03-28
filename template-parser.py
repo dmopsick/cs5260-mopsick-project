@@ -7,7 +7,7 @@ def parse_template(file_path, in_resources):
     type = 'TRANSFORM'
     actions = []
     with open(file_path, 'r') as file:
-      content = file.read().replace(" ", "")
+      content = file.read()
       templates = content.split("\n\n")  # Assuming each template is separated by two newlines
       for template in templates:
         inputs = []

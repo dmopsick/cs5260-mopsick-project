@@ -1,21 +1,22 @@
 from __future__ import annotations
 from uuid import UUID, uuid4
+from myresource import MyResource
 
-class Resource(object):
+class Country(object):
 
     ID: UUID
-    name: str
-    availableLand: Resource
-    water: Resource
-    population: Resource
-    metallicElements: Resource
-    timber: Resource
-    metallicAlloysWate: Resource # Unsure if I need this
-    nintendo3DS: Resource # I am treating this as electronics in the example
-    # It just has a more fun name
-    nintendo3DSWaste: Resource # I am not sure I need this
-    housing: Resource
-    houseingWaste: Resource
+    NAME: str
+    AVAILABLE_LAND: MyResource
+    WATER: MyResource
+    POPULATION: MyResource
+    METALLIC_ELEMENTS: MyResource
+    TIMBER: MyResource
+    METALLIC_ALLOYS: MyResource
+    METALLIC_ALLOYS_WASTE: MyResource 
+    ELECTRONICS: MyResource 
+    ELECTRONICS_WASTE: MyResource
+    HOUSING: MyResource
+    HOUSING_WASTE: MyResource
 
     def __init__(self, name: str, count: int) -> None:
       super().__init__()

@@ -5,14 +5,17 @@ class Action(object):
 
     ID: UUID
     NAME: str
+    TYPE: str
+    INPUTS: list
+    OUTPUTS: list
 
     def __init__(self, name: str, type: str, inputs: list, outputs: list) -> None:
       super().__init__()
       self.ID = uuid4()
       self.NAME = name
       self.TYPE = type
-      self.inputs = inputs
-      self.outputs = outputs
+      self.INPUTS = inputs
+      self.OUTPUTS = outputs
 
     def __eq__(self, other: Action) -> bool:
       return self.ID == other.ID
