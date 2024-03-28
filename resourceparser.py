@@ -1,10 +1,14 @@
-import copy
 
-# Calling it MyResource because Python told me Resource was reserved
-from myresource import MyResource
+# DEFAULT_RESOURCE_WEIGHT is a constant I have set to 1 for now making every resource the same weight
+from myresource import MyResource, DEFAULT_RESOURCE_WEIGHT
 from country import Country
-from engine import STARTING_WASTE_VALUE
 
+####################################
+# Parse a CSV file into a list of countries
+# Each country contains a name and a list of resources 
+# CSV titles
+# country,population,availableLand,water,metallicElements,timber,metallicAlloys,electronics,housing
+###################################
 def parse_resource(file_path):
     country_obj_list = []
 
@@ -31,31 +35,37 @@ def parse_resource(file_path):
             country_name = country_val_list[0]
 
             # Population
-            population = country_val_list[1]
+            population = MyResource('Population', country_val_list[1], DEFAULT_RESOURCE_WEIGHT)
 
             # Available Land
-            available_land = country_val_list[2]
+            available_land = MyResource('Available Land', country_val_list[2], DEFAULT_RESOURCE_WEIGHT)
 
             # Water
-            water = country_val_list[3]
+            water = MyResource('Water', country_val_list[3], DEFAULT_RESOURCE_WEIGHT)
 
             # MetallicElements
-            metallic_elements = country_val_list[4]
+            metallic_elements = MyResource('Metallic Elements', country_val_list[4], DEFAULT_RESOURCE_WEIGHT)
 
             # Timber
-            timber = country_val_list[5]
+            timber = MyResource('Timber', country_val_list[5], DEFAULT_RESOURCE_WEIGHT)
 
             # MetallicAlloys
-            metallic_elements = country_val_list[6]
+            metallic_alloys = MyResource('Metallic Alloys', country_val_list[6], DEFAULT_RESOURCE_WEIGHT)
 
             # Electronics
-            electronics = country_val_list[7]
+            electronics = MyResource('Electronics', country_val_list[7], DEFAULT_RESOURCE_WEIGHT)
 
             # Housing
-            housing = country_val_list[8]
+            housing = MyResource('Housing', country_val_list[8], DEFAULT_RESOURCE_WEIGHT)
 
             # Build county object
+            country = Country(country_name, population, available_land, water, metallic_elements, timber,
+                               metallic_alloys, electronics, housing)
+            
+            # Add the country to the country list
+            country_obj_list.append(country)
 
-
+            print("Added " + country_name + " to the country list.")
+            print(vars(country))
 
     return country_obj_list

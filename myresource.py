@@ -1,6 +1,10 @@
 from __future__ import annotations
 from uuid import UUID, uuid4
 
+# Define constants to modify world settings
+STARTING_WASTE_VALUE = 0
+DEFAULT_RESOURCE_WEIGHT = 1
+
 class MyResource(object):
 
     ID: UUID
