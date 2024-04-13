@@ -1,14 +1,13 @@
 
-# DEFAULT_RESOURCE_WEIGHT is a constant I have set to 1 for now making every resource the same weight
 from myresource import MyResource, DEFAULT_RESOURCE_WEIGHT
 from country import Country
 
-####################################
+#######################################
 # Parse a CSV file into a list of countries
 # Each country contains a name and a list of resources 
 # CSV titles
 # country,population,availableLand,water,metallicElements,timber,metallicAlloys,electronics,housing
-###################################
+#######################################
 def parse_resource(file_path):
     country_obj_list = []
 
@@ -66,6 +65,6 @@ def parse_resource(file_path):
             country_obj_list.append(country)
 
             print("Added " + country_name + " to the country list.")
-            print(vars(country))
+            # print(vars(country))
 
     return country_obj_list

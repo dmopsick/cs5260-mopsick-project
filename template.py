@@ -3,22 +3,25 @@ from uuid import UUID, uuid4
 
 # Define constants to modify world settings
 STARTING_WASTE_VALUE = 0
-# DEFAULT_RESOURCE_WEIGHT is a constant I have set to 1 for now making every resource the same weight
 DEFAULT_RESOURCE_WEIGHT = 1
 
-class MyResource(object):
+class Template(object):
 
     ID: UUID
     NAME: str
+    TYPE: str
+    INPUTS: list
+    OUTPUTS: list
 
-    def __init__(self, name: str, quantity: int, weight: int) -> None:
+    def __init__(self, name: str, type: str, inputs: list, outputs: list) -> None:
       super().__init__()
       self.ID = uuid4()
       self.NAME = name
-      self.QUANTITY = quantity
-      self.WEIGHT = weight
+      self.TYPE = type
+      self.INPUTS = inputs
+      self.OUTPUTS = outputs
 
-    def __eq__(self, other: MyResource) -> bool:
+    def __eq__(self, other: Template) -> bool:
       return self.ID == other.ID
 
     def __hash__(self) -> int:
