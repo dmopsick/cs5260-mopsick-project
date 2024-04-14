@@ -15,3 +15,7 @@ initial_state_1 = WorldState(initial_country_list1)
 
 # Load the list of templates
 template_list = parse_template(TEMPLATE_FILE1)
+
+# Now that the world state is set up time to start our AI agent
+
+# So I believe then we just start up the search agent and have it go and print results...
