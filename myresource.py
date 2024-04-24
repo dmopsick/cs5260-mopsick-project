@@ -10,6 +10,8 @@ class MyResource(object):
 
     ID: UUID
     NAME: str
+    QUANTITY: int
+    WEIGHT: int
 
     def __init__(self, name: str, quantity: int, weight: int) -> None:
       super().__init__()

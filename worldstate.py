@@ -14,7 +14,7 @@ class WorldState(object):
     def __init__(self, countries: list) -> None:
       super().__init__()
       self.ID = uuid4()
-      self.COUNTRIES = list
+      self.COUNTRIES = countries
       # What else does the state need to hold?
 
     def __eq__(self, other: WorldState) -> bool:

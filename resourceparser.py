@@ -34,28 +34,28 @@ def parse_resource(file_path):
             country_name = country_val_list[0]
 
             # Population
-            population = MyResource('Population', country_val_list[1], DEFAULT_RESOURCE_WEIGHT)
+            population = MyResource('Population', int(country_val_list[1]), DEFAULT_RESOURCE_WEIGHT)
 
             # Available Land
-            available_land = MyResource('Available Land', country_val_list[2], DEFAULT_RESOURCE_WEIGHT)
+            available_land = MyResource('Available Land', int(country_val_list[2]), DEFAULT_RESOURCE_WEIGHT)
 
             # Water
-            water = MyResource('Water', country_val_list[3], DEFAULT_RESOURCE_WEIGHT)
+            water = MyResource('Water', int(country_val_list[3]), DEFAULT_RESOURCE_WEIGHT)
 
             # MetallicElements
-            metallic_elements = MyResource('Metallic Elements', country_val_list[4], DEFAULT_RESOURCE_WEIGHT)
+            metallic_elements = MyResource('Metallic Elements', int(country_val_list[4]), DEFAULT_RESOURCE_WEIGHT)
 
             # Timber
-            timber = MyResource('Timber', country_val_list[5], DEFAULT_RESOURCE_WEIGHT)
+            timber = MyResource('Timber', int(country_val_list[5]), DEFAULT_RESOURCE_WEIGHT)
 
             # MetallicAlloys
-            metallic_alloys = MyResource('Metallic Alloys', country_val_list[6], DEFAULT_RESOURCE_WEIGHT)
+            metallic_alloys = MyResource('Metallic Alloys', int(country_val_list[6]), DEFAULT_RESOURCE_WEIGHT)
 
             # Electronics
-            electronics = MyResource('Electronics', country_val_list[7], DEFAULT_RESOURCE_WEIGHT)
+            electronics = MyResource('Electronics', int(country_val_list[7]), DEFAULT_RESOURCE_WEIGHT)
 
             # Housing
-            housing = MyResource('Housing', country_val_list[8], DEFAULT_RESOURCE_WEIGHT)
+            housing = MyResource('Housing', int(country_val_list[8]), DEFAULT_RESOURCE_WEIGHT)
 
             # Build county object
             country = Country(country_name, population, available_land, water, metallic_elements, timber,

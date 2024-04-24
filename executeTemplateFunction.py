@@ -27,7 +27,7 @@ def execute_template(state: WorldState, country: Country, template: Template):
 
         if previous_country.NAME == country.NAME:
               # This is the country we are updating
-              state.COUNTRIES.remove(i)
+              state.COUNTRIES.remove(previous_country)
               break
         
     # Add the new version of the country to the list
@@ -42,23 +42,43 @@ def execute_template(state: WorldState, country: Country, template: Template):
 # An enhancement to this code base would be to replace all of the string literals with constants
 ######################################
 def country_can_execute_template(country: Country, template: Template):
+
+    print("Checking if " + country.NAME + " can perform " + template.NAME)
+
     # Verify that the incoming state has each of the required inputs
     for resource in template.INPUTS:
-        if resource.NAME == "population" and resource.QUANTITY > country.POPULATION:
+        resource_quantity = int(resource.QUANTITY)
+        if resource.NAME == "Population":
+                if resource_quantity > country.POPULATION.QUANTITY:
+                    print("Not enough " + resource.NAME)
+                    return False
+        elif resource.NAME == "AvailableLand":
+            if resource_quantity > country.AVAILABLE_LAND.QUANTITY:
+                print("Not enough " + resource.NAME)
                 return False
-        elif resource.NAME == "availableLand" and resource.QUANTITY > country.AVAILABLE_LAND:
+        elif resource.NAME == "Water":
+            if resource_quantity > country.WATER.QUANTITY:
+                print("Not enough " + resource.NAME)
                 return False
-        elif resource.NAME == "water" and resource.QUANTITY > country.WATER:
+        elif resource.NAME == "MetallicElements":
+            if resource_quantity > country.METALLIC_ELEMENTS.QUANTITY:
+                print("Not enough " + resource.NAME)
                 return False
-        elif resource.NAME == "metallicElements" and resource.QUANTITY > country.METALLIC_ELEMENTS:
+        elif resource.NAME == "MetallicAlloys":
+            if resource_quantity > country.METALLIC_ALLOYS.QUANTITY:
+                print("Not enough " + resource.NAME)
                 return False
-        elif resource.NAME == "metallicAlloys" and resource.QUANTITY > country.METALLIC_ALLOYS:
+        elif resource.NAME == "Timber":
+            if resource_quantity > country.TIMBER.QUANTITY:
+                print("Not enough " + resource.NAME)
                 return False
-        elif resource.NAME == "timber" and resource.QUANTITY > country.TIMBER:
+        elif resource.NAME == "Electronics":
+            if resource_quantity > country.ELECTRONICS.QUANTITY:
+                print("Not enough " + resource.NAME)
                 return False
-        elif resource.NAME == "electronics" and resource.QUANTITY > country.ELECTRONICS:
-                return False
-        elif resource.NAME == "housing" and resource.QUANTITY > country.HOUSING:
+        elif resource.NAME == "Housing":
+            if resource_quantity > country.HOUSING.QUANTITY:
+                print("Not enough " + resource.NAME)
                 return False
         else:
             print("Unexpected resouce name provided: " + resource.NAME)
@@ -71,23 +91,26 @@ def country_can_execute_template(country: Country, template: Template):
 def apply_template_to_country(country: Country, template: Template):
        # Decrement the resources for the country for each input
         for resource in template.INPUTS:
-            if resource.NAME == "population":
-                country.POPULATION.QUANTITY -= resource.QUANTITY
-            elif resource.NAME == "availableLand":
-                country.AVAILABLE_LAND.QUANTITY -= resource.QUANTITY
-            elif resource.NAME == "water":
-                country.WATER.QUANTITY -= resource.QUANTITY
-            elif resource.NAME == "metallicElements":
-                country.METALLIC_ELEMENTS.QUANTITY -= resource.QUANTITY
-            elif resource.NAME == "timber":
-                country.TIMBER.QUANTITY -= resource.QUANTITY
-            elif resource.NAME == "metallicAlloys":
-                country.METALLIC_ALLOYS.QUANTITY -= resource.QUANTITY
-            elif resource.NAME == "electronics":
-                country.ELECTRONICS.QUANTITY -= resource.QUANTITY
-            elif resource.NAME == "housing":
-                country.HOUSING.QUANTITY -= resource.QUANTITY
+            resource_quantity = int(resource.QUANTITY)
+
+            if resource.NAME == "Population":
+                country.POPULATION.QUANTITY -= resource_quantity
+            elif resource.NAME == "AvailableLand":
+                country.AVAILABLE_LAND.QUANTITY -= resource_quantity
+            elif resource.NAME == "Water":
+                country.WATER.QUANTITY -= resource_quantity
+            elif resource.NAME == "MetallicElements":
+                country.METALLIC_ELEMENTS.QUANTITY -= resource_quantity
+            elif resource.NAME == "Timber":
+                country.TIMBER.QUANTITY -= resource_quantity
+            elif resource.NAME == "MetallicAlloys":
+                country.METALLIC_ALLOYS.QUANTITY -= resource_quantity
+            elif resource.NAME == "Electronics":
+                country.ELECTRONICS.QUANTITY -= resource_quantity
+            elif resource.NAME == "Housing":
+                country.HOUSING.QUANTITY -= resource_quantity
             else:
                 print("Unexpected resouce name provided: " + resource.NAME)
 
-       # Increment the resources for the country for each output
+        # Increment the resources for the country for each output
+        return country
